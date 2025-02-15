@@ -1,0 +1,24 @@
+< THE SYMBOL TABLE >  noname.com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STR1                     	00102     	1         	VAR       	(NOSEG)   
+STR2                     	00110     	1         	VAR       	(NOSEG)   
+STR3                     	00121     	1         	VAR       	(NOSEG)   
+STR4                     	0012F     	1         	VAR       	(NOSEG)   
+DIVISOR                  	0013E     	1         	VAR       	(NOSEG)   
+DIVIDEND                 	0013F     	1         	VAR       	(NOSEG)   
+RESULT                   	00140     	2         	VAR       	(NOSEG)   
+CODE                     	00142     	-1        	LABEL     	(NOSEG)   
+MAIN                     	00142     	-1        	NEAR      	(NOSEG)   
+FIND_QUOT_REM            	0018A     	-1        	NEAR      	(NOSEG)   
+PUTS                     	00197     	-1        	NEAR      	(NOSEG)   
+GETCHE                   	0019C     	-1        	NEAR      	(NOSEG)   
+ATOI                     	001A1     	-1        	NEAR      	(NOSEG)   
+ITOA                     	001A4     	-1        	NEAR      	(NOSEG)   
+PUTCHAR                  	001A8     	-1        	NEAR      	(NOSEG)   
+EXIT                     	001AD     	-1        	NEAR      	(NOSEG)   
+===================================================================================================
+[ 2/16/2024  --  8:27:39 AM ] 
+< END >
+ 

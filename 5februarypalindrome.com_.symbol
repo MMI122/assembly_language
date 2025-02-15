@@ -1,0 +1,21 @@
+< THE SYMBOL TABLE >  5februarypalindrome.com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STR1                     	00102     	1         	VAR       	(NOSEG)   
+STR2                     	00111     	1         	VAR       	(NOSEG)   
+STR3                     	00125     	1         	VAR       	(NOSEG)   
+STRING                   	00136     	1         	VAR       	(NOSEG)   
+CODE                     	00140     	-1        	LABEL     	(NOSEG)   
+STRING_INPUT             	00157     	-1        	NEAR      	(NOSEG)   
+FIND_PALINDROME          	0016A     	-1        	NEAR      	(NOSEG)   
+AGAIN                    	00184     	-1        	LABEL     	(NOSEG)   
+PALINDROME               	00192     	-1        	LABEL     	(NOSEG)   
+NOT_PALINDROME           	0019A     	-1        	LABEL     	(NOSEG)   
+RETURN                   	001A0     	-1        	LABEL     	(NOSEG)   
+PUTS                     	001A2     	-1        	NEAR      	(NOSEG)   
+EXIT                     	001A7     	-1        	NEAR      	(NOSEG)   
+===================================================================================================
+[ 2/5/2024  --  4:46:39 PM ] 
+< END >
+ 

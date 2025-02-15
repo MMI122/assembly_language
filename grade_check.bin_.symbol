@@ -1,0 +1,17 @@
+< THE SYMBOL TABLE >  grade_check.bin_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+GRADE                    	00000     	1         	VAR       	data      
+CODE                     	00001     	-5        	SEGMENT   	(ITSELF)  
+GRADE_A                  	00015     	-1        	LABEL     	code      
+GRADE_B                  	0001D     	-1        	LABEL     	code      
+GRADE_C                  	00025     	-1        	LABEL     	code      
+GRADE_D                  	0002D     	-1        	LABEL     	code      
+GRADE_F                  	00035     	-1        	LABEL     	code      
+EXIT                     	0003D     	-1        	LABEL     	code      
+===================================================================================================
+[ 1/16/2024  --  12:42:30 AM ] 
+< END >
+ 

@@ -1,0 +1,52 @@
+
+
+org 100h
+
+
+
+
+
+
+;.data
+;arr dw 6 dup(0) ; declare an array with 6 bytes, initialized to 0
+;
+;.code
+;mov ax, 1234h ; some data
+;push ax ; push data onto the stack
+;
+;mov bx, offset arr ; get the address of the array
+;pop [bx] ; pop data from the stack into the array
+.data
+arr db 6 dup(0) ; declare an array with 6 bytes, initialized to 0
+
+.code
+mov cx, 6 ; number of elements in the array
+lea si, arr ; load the address of the array
+
+input_loop:
+mov ah, 01h ; service number for console input
+int 21h ; call DOS interrupt
+sub al, '0' ; convert from ASCII to number
+mov [si], al ; store the number in the array
+inc si ; move to the next position in the array
+loop input_loop ; repeat for all elements
+
+mov cx, 6 ; number of elements in the array
+lea si, arr ; load the address of the array
+
+output_loop:
+mov al, [si] ; load the number from the array
+add al, '0' ; convert from number to ASCII
+mov ah, 02h ; service number for console output
+int 21h ; call DOS interrupt
+inc si ; move to the next position in the array
+loop output_loop ; repeat for all elements
+
+mov ax, 4C00h ; terminate program
+int 21h
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\awpush.asm

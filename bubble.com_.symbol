@@ -1,0 +1,17 @@
+< THE SYMBOL TABLE >  bubble.com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+BUBBLESORT               	0010D     	-1        	NEAR      	(NOSEG)   
+OUTLUP                   	0010D     	-1        	LABEL     	(NOSEG)   
+INLUP                    	00112     	-1        	LABEL     	(NOSEG)   
+BACKTOIN                 	0011D     	-1        	LABEL     	(NOSEG)   
+RETURN                   	00126     	-1        	LABEL     	(NOSEG)   
+SWAP                     	00127     	-1        	LABEL     	(NOSEG)   
+ARR                      	00136     	1         	VAR       	(NOSEG)   
+_LOCATION_COUNTER__N1_L34	0013B     	-1        	LABEL     	(NOSEG)   
+TMP                      	0013B     	1         	VAR       	(NOSEG)   
+===================================================================================================
+[ 1/16/2024  --  7:35:44 AM ] 
+< END >
+ 

@@ -1,0 +1,74 @@
+org 100h
+
+.code
+
+
+mov number1, 0
+mov number2, 0
+
+
+; first 4 digits
+
+mov cx, 4
+
+here1:
+; make room for new digit
+mov ax, number1
+mov bx, 10
+mul bx
+mov number1, ax
+
+; input
+mov ah, 1h
+int 21h
+mov ah, 0
+
+; get actual digit from its ascii value
+sub ax, 48
+
+; add new digit to the number
+add ax, number1
+mov number1, ax
+
+loop here1
+
+; next 4 digits
+
+mov cx, 4
+
+here2:
+; make room for new digit
+mov ax, number2
+mov bx, 10
+mul bx
+mov number2, ax
+
+; input
+mov ah, 1h
+int 21h
+mov ah, 0
+
+; get actual digit from its ascii value
+sub ax, 48
+
+; add new digit to the number
+add ax, number2
+mov number2, ax
+
+loop here2
+
+
+ret
+
+
+
+.data
+
+char dw ?
+
+number1 dw ?
+number2 dw ?
+
+
+
+; [SOURCE]: C:\emu8086\MySource\cubearray.asm

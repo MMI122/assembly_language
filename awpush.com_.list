@@ -1,0 +1,67 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+awpush.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 1/22/2024  --  3:21:48 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       
+[   3]        :                                       org 100h
+[   4]        :                                       
+[   5]        :                                       
+[   6]        :                                       
+[   7]        :                                       
+[   8]        :                                       
+[   9]        :                                       
+[  10]        :                                       ;.data
+[  11]        :                                       ;arr dw 6 dup(0) ; declare an array with 6 bytes, initialized to 0
+[  12]        :                                       ;
+[  13]        :                                       ;.code
+[  14]        :                                       ;mov ax, 1234h ; some data
+[  15]        :                                       ;push ax ; push data onto the stack
+[  16]        :                                       ;
+[  17]        :                                       ;mov bx, offset arr ; get the address of the array
+[  18]        :                                       ;pop [bx] ; pop data from the stack into the array
+[  19]    0100: EB 06                                 .data
+[  20]    0102: 00 00 00 00 00 00                     arr db 6 dup(0) ; declare an array with 6 bytes, initialized to 0
+[  21]        :                                       
+[  22]    0108:                                       .code
+[  23]    0108: B9 06 00                              mov cx, 6 ; number of elements in the array
+[  24]    010B: BE 02 01                              lea si, arr ; load the address of the array
+[  25]        :                                       
+[  26]    010E:                                       input_loop:
+[  27]    010E: B4 01                                 mov ah, 01h ; service number for console input
+[  28]    0110: CD 21                                 int 21h ; call DOS interrupt
+[  29]    0112: 2C 30                                 sub al, '0' ; convert from ASCII to number
+[  30]    0114: 88 04                                 mov [si], al ; store the number in the array
+[  31]    0116: 46                                    inc si ; move to the next position in the array
+[  32]    0117: E2 F5                                 loop input_loop ; repeat for all elements
+[  33]        :                                       
+[  34]    0119: B9 06 00                              mov cx, 6 ; number of elements in the array
+[  35]    011C: BE 02 01                              lea si, arr ; load the address of the array
+[  36]        :                                       
+[  37]    011F:                                       output_loop:
+[  38]    011F: 8A 04                                 mov al, [si] ; load the number from the array
+[  39]    0121: 04 30                                 add al, '0' ; convert from number to ASCII
+[  40]    0123: B4 02                                 mov ah, 02h ; service number for console output
+[  41]    0125: CD 21                                 int 21h ; call DOS interrupt
+[  42]    0127: 46                                    inc si ; move to the next position in the array
+[  43]    0128: E2 F5                                 loop output_loop ; repeat for all elements
+[  44]        :                                       
+[  45]    012A: B8 00 4C                              mov ax, 4C00h ; terminate program
+[  46]    012D: CD 21                                 int 21h
+[  47]        :                                       
+[  48]        :                                       
+[  49]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

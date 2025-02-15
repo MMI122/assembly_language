@@ -1,0 +1,138 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+; add your code here
+.data
+str1 db "Enter divisor$"
+str2 db 13,10,"Enter dividend$"
+str3 db 13,10,"Quotient is$"
+str4 db 13,10,"Remainder is$"
+divisor db ?
+dividend db ?
+result dw ?
+.code
+main proc
+mov ax,@data
+mov ds,ax
+
+
+
+lea dx,str1
+call puts
+call getche
+call atoi
+mov [divisor],al
+
+
+
+lea dx,str2
+call puts
+call getche
+call atoi
+mov [dividend],al
+
+
+
+call find_quot_rem
+
+
+
+
+
+
+
+lea dx,str3
+call puts
+mov dl,byte ptr result[0]
+call itoa
+call putchar  ;to dispaly character
+
+
+
+lea dx,str4
+call puts
+mov dl,byte ptr result[1]
+call itoa
+call putchar
+
+call exit
+endp
+
+
+
+proc find_quot_rem
+
+mov ah,0
+mov al,[dividend]
+div [divisor]
+mov [result],ax
+ret
+find_quot_rem endp
+
+
+
+
+
+puts proc
+mov ah,09h
+int 21h
+ret
+puts endp
+
+
+getche proc
+mov ah,01h
+int 21h
+ret
+getche endp
+
+
+
+atoi proc
+sub al,'0'
+ret
+atoi endp
+
+
+
+
+
+itoa proc
+add dx,'0'
+ret
+itoa endp
+
+
+
+
+putchar proc
+mov ah,02h
+int 21h
+ret
+putchar endp
+
+
+
+
+
+exit proc
+mov ah,4ch
+int 21h
+ret
+exit endp
+
+end main
+
+
+
+
+
+
+
+
+
+
+

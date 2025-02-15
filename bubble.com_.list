@@ -1,0 +1,79 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+bubble.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 1/16/2024  --  7:35:44 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       
+[   5]        :                                       ; add your code here
+[   6]        :                                       
+[   7]        :                                       org 100h
+[   8]        :                                       
+[   9]        :                                       ; add your code here
+[  10]    0100: B9 05 00                              mov cx, len
+[  11]    0103: 49                                    dec cx
+[  12]    0104: 83 F9 00                              cmp cx, 0h
+[  13]    0107: 74 1D                                 je return
+[  14]        :                                       
+[  15]    0109: E8 01 00                              call BubbleSort
+[  16]    010C: C3                                    ret
+[  17]        :                                       
+[  18]    010D:                                       BubbleSort proc near
+[  19]    010D:                                       outlup:
+[  20]    010D: BE 36 01                              lea si, arr
+[  21]    0110: 8B D1                                 mov dx, cx
+[  22]    0112:                                       inlup:
+[  23]    0112: 8B FE                                 mov di, si
+[  24]    0114: 47                                    inc di
+[  25]    0115: 8A 04                                 mov al, [si]
+[  26]    0117: 8A 1D                                 mov bl, [di]
+[  27]    0119: 3A C3                                 cmp al, bl
+[  28]    011B: 77 0A                                 ja swap
+[  29]    011D:                                       BackToIn:
+[  30]    011D: 46                                    inc si
+[  31]    011E: 47                                    inc di
+[  32]    011F: E2 F1                                 loop inlup
+[  33]    0121: 8B CA                                 mov cx, dx
+[  34]    0123: E2 E8                                 loop outlup
+[  35]    0125: C3                                    ret
+[  36]        :                                       BubbleSort endp
+[  37]        :                                       
+[  38]        :                                       
+[  39]    0126:                                       return:
+[  40]    0126: C3                                    ret
+[  41]    0127:                                       swap:
+[  42]    0127: A2 3B 01                              mov tmp, al
+[  43]    012A: 8A C3                                 mov al, bl
+[  44]    012C: 8A 1E 3B 01                           mov bl, tmp
+[  45]    0130: 88 04                                 mov [si], al
+[  46]    0132: 88 1D                                 mov [di], bl
+[  47]    0134: EB E7                                 jmp BackToIn
+[  48]        :                                       
+[  49]        :                                       
+[  50]    0136: 06 04 05 09 02                        arr db 6h, 4h, 5h ,9h, 2h
+[  51]        :                                       
+[  52]        :                                       
+[  53]    013B:                                       len equ ($-arr)
+[  54]    013B: 00                                    tmp db ?
+[  55]        :                                       
+[  56]        :                                       
+[  57]        :                                       
+[  58]        :                                       
+[  59]        :                                       
+[  60]        :                                       
+[  61]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

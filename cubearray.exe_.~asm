@@ -1,0 +1,93 @@
+.model small
+.stack 100h
+.data
+input dw ?
+.code
+main proc
+mov ax, @data
+mov ds, ax
+
+; Get 4 digit input
+mov ah, 1
+int 21h
+sub al, 30h
+mov bh, al
+
+mov ah, 1
+int 21h
+sub al, 30h
+mov bl, al
+
+mov ah, 1
+int 21h
+sub al, 30h
+mov cl, al
+
+mov ah, 1
+int 21h
+sub al, 30h
+mov ch, 0
+
+; Store lower 2 digits in AX
+mov al, bh
+mov ah, bl
+
+; Store upper 2 digits in DX
+mov dx, 0
+mov dl, cl
+mov dh, ch
+
+; Store in input variable
+mov input, ax
+shl dx, 16
+or input, dx
+
+; Print input
+mov ax, input
+call print_unsigned
+
+mov ax, 4c00h
+int 21h
+main endp
+
+print_unsigned proc
+; Push registers
+push ax
+push bx
+push cx
+push dx
+
+mov bx, 10 ; divisor
+
+; Extract each digit
+repeat:
+mov dx, 0
+div bx
+add dl, 30h
+push dx
+
+cmp ax, 0
+jne repeat
+
+; Print digits
+mov ah, 2
+print:
+pop dx
+int 21h
+cmp dx, 0
+jne print
+
+; Pop registers
+pop dx
+pop cx
+pop bx
+pop ax
+
+ret
+print_unsigned endp
+
+end main
+
+
+
+; [SOURCE]: C:\emu8086\MySource\cubearray.asm

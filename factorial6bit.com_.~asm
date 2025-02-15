@@ -1,0 +1,34 @@
+org 100h
+.code
+
+lea si,arr
+lea di,arr2
+
+mov cx,6
+here:
+mov ax,1
+
+mov bx,cx
+mov cl,[si]
+
+here2:
+mul cx
+loop here2
+mov cx,bx
+inc si
+mov [di],ax
+loop here
+
+ret
+
+
+
+.data
+arr db 1,2,3,4,5,6
+arr2 dw 5 (0)
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\factorial6bit.asm

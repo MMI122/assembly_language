@@ -1,0 +1,48 @@
+
+
+
+org 100h
+
+.code
+
+lea si,arr
+lea di,arr2
+mov cl,5
+mov dx,0
+
+here:
+mov ax,1
+mov bl,cl
+mov cl,[si]
+
+
+here2:
+mul cl
+
+loop here2
+
+add dx,ax
+
+mov [di],dx
+
+inc si
+
+
+mov cl,bl
+
+loop here
+
+ret
+
+
+.data
+
+arr dw 1,2,3,4,5
+arr2 db ?
+
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\factorialnewonefinal.asm

@@ -1,0 +1,89 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+4input_then storeit_onenum.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 1/15/2024  --  8:59:42 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       org 100h
+[   2]        :                                       
+[   3]    0100:                                       .code
+[   4]        :                                       
+[   5]        :                                       
+[   6]    0100: C7 06 51 01 00 00                     mov number1, 0
+[   7]    0106: C7 06 53 01 00 00                     mov number2, 0
+[   8]        :                                       
+[   9]        :                                       
+[  10]        :                                       ; first 4 digits
+[  11]        :                                       
+[  12]    010C: B9 04 00                              mov cx, 4
+[  13]        :                                       
+[  14]    010F:                                       here1:
+[  15]        :                                       ; make room for new digit
+[  16]    010F: A1 51 01                              mov ax, number1
+[  17]    0112: BB 0A 00                              mov bx, 10
+[  18]    0115: F7 E3                                 mul bx
+[  19]    0117: A3 51 01                              mov number1, ax
+[  20]        :                                       
+[  21]        :                                       ; input
+[  22]    011A: B4 01                                 mov ah, 1h
+[  23]    011C: CD 21                                 int 21h
+[  24]    011E: B4 00                                 mov ah, 0
+[  25]        :                                       
+[  26]        :                                       ; get actual digit from its ascii value
+[  27]    0120: 2D 30 00                              sub ax, 48
+[  28]        :                                       
+[  29]        :                                       ; add new digit to the number
+[  30]    0123: 03 06 51 01                           add ax, number1
+[  31]    0127: A3 51 01                              mov number1, ax
+[  32]        :                                       
+[  33]    012A: E2 E3                                 loop here1
+[  34]        :                                       
+[  35]        :                                       ; next 4 digits
+[  36]        :                                       
+[  37]    012C: B9 04 00                              mov cx, 4
+[  38]        :                                       
+[  39]    012F:                                       here2:
+[  40]        :                                       ; make room for new digit
+[  41]    012F: A1 53 01                              mov ax, number2
+[  42]    0132: BB 0A 00                              mov bx, 10
+[  43]    0135: F7 E3                                 mul bx
+[  44]    0137: A3 53 01                              mov number2, ax
+[  45]        :                                       
+[  46]        :                                       ; input
+[  47]    013A: B4 01                                 mov ah, 1h
+[  48]    013C: CD 21                                 int 21h
+[  49]    013E: B4 00                                 mov ah, 0
+[  50]        :                                       
+[  51]        :                                       ; get actual digit from its ascii value
+[  52]    0140: 2D 30 00                              sub ax, 48
+[  53]        :                                       
+[  54]        :                                       ; add new digit to the number
+[  55]    0143: 03 06 53 01                           add ax, number2
+[  56]    0147: A3 53 01                              mov number2, ax
+[  57]        :                                       
+[  58]    014A: E2 E3                                 loop here2
+[  59]        :                                       
+[  60]        :                                       
+[  61]    014C: C3                                    ret
+[  62]        :                                       
+[  63]        :                                       
+[  64]        :                                       
+[  65]    014D: EB B1                                 .data
+[  66]        :                                       
+[  67]    014F: 00 00                                 char dw ?
+[  68]        :                                       
+[  69]    0151: 00 00                                 number1 dw ?
+[  70]    0153: 00 00                                 number2 dw ?
+[  71]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

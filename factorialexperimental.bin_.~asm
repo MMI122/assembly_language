@@ -1,0 +1,49 @@
+.data
+arr db 2,3,1
+arr2 db 3 dup(0)
+
+.code
+
+lea si, arr
+lea di, arr2
+
+mov cx, 3 ; Loop counter
+
+here:
+mov al, [si]
+call factorial
+
+mov [di], ax
+inc si
+inc di
+
+loop here
+
+factorial:
+mov ax, 1
+mov cx, ax
+
+mov bx, 1
+
+fact_loop:
+mul bx
+loop fact_loop
+
+ret
+
+mov cx, 3
+lea si, arr
+lea di, arr2
+
+mov bl, 0
+
+add_loop:
+add bl, [si]
+inc si
+loop add_loop
+
+ret
+
+
+
+; [SOURCE]: C:\emu8086\MySource\factorialexperimental.asm

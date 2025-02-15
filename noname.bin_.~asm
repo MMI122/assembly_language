@@ -1,0 +1,11 @@
+.data
+arr dw 6 dup(0) ; declare an array with 6 bytes, initialized to 0
+
+.code
+mov ax, 1234h ; some data
+push ax ; push data onto the stack
+
+mov bx, offset arr ; get the address of the array
+pop [bx] ; pop data from the stack into the array
+
+

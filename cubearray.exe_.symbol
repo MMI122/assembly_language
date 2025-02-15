@@ -1,0 +1,16 @@
+< THE SYMBOL TABLE >  cubearray.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+INPUT                    	00000     	2         	VAR       	data      
+CODE                     	00011     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+PRINT_UNSIGNED           	00062     	-1        	NEAR      	code      
+REPEAT                   	00069     	-1        	LABEL     	code      
+PRINT                    	00079     	-1        	LABEL     	code      
+===================================================================================================
+[ 1/15/2024  --  7:50:36 PM ] 
+< END >
+ 

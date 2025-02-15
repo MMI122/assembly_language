@@ -1,0 +1,40 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+.org 100h
+.data
+char dw 4 dup(?)
+arr2 dw 1 dup(0)
+.code
+mov cx, 4
+lea bx, char
+
+read_loop:
+mov ah, 1h
+int 21h
+mov [bx], al
+inc bx
+loop read_loop
+
+mov cx, 4
+lea bx, char
+
+write_loop:
+mov ah, 2h ;
+mov dl, [bx]
+int 21h
+inc bx
+loop write_loop ;
+
+ret
+
+
+
+
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\multiple input.asm

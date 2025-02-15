@@ -1,0 +1,147 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+cubearray.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 1/15/2024  --  7:50:36 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       .data
+[   4]    0100: 00 00                                 input dw ?
+[   5]        :                                       .code
+[   6]    0110:                                       main proc
+[   7]    0110: B8 10 00                              mov ax, @data
+[   8]    0113: 8E D8                                 mov ds, ax
+[   9]        :                                       
+[  10]        :                                       ; Get 4 digit input
+[  11]    0115: B4 01                                 mov ah, 1
+[  12]    0117: CD 21                                 int 21h
+[  13]    0119: 2C 30                                 sub al, 30h
+[  14]    011B: 8A F8                                 mov bh, al
+[  15]        :                                       
+[  16]    011D: B4 01                                 mov ah, 1
+[  17]    011F: CD 21                                 int 21h
+[  18]    0121: 2C 30                                 sub al, 30h
+[  19]    0123: 8A D8                                 mov bl, al
+[  20]        :                                       
+[  21]    0125: B4 01                                 mov ah, 1
+[  22]    0127: CD 21                                 int 21h
+[  23]    0129: 2C 30                                 sub al, 30h
+[  24]    012B: 8A C8                                 mov cl, al
+[  25]        :                                       
+[  26]    012D: B4 01                                 mov ah, 1
+[  27]    012F: CD 21                                 int 21h
+[  28]    0131: 2C 30                                 sub al, 30h
+[  29]    0133: B5 00                                 mov ch, 0
+[  30]        :                                       
+[  31]        :                                       ; Store lower 2 digits in AX
+[  32]    0135: 8A C7                                 mov al, bh
+[  33]    0137: 8A E3                                 mov ah, bl
+[  34]        :                                       
+[  35]        :                                       ; Store upper 2 digits in DX
+[  36]    0139: BA 00 00                              mov dx, 0
+[  37]    013C: 8A D1                                 mov dl, cl
+[  38]    013E: 8A F5                                 mov dh, ch
+[  39]        :                                       
+[  40]        :                                       ; Store in input variable
+[  41]    0140: A3 00 00                              mov input, ax
+[  42]    0143: D1 E2 D1 E2 D1 E2 D1 E2 D1 E2 D1 E2   shl dx, 16
+                D1 E2 D1 E2 D1 E2 D1 E2 D1 E2 D1 E2 
+                D1 E2 D1 E2 D1 E2 D1 E2             
+[  43]    0163: 09 16 00 00                           or input, dx
+[  44]        :                                       
+[  45]        :                                       ; Print input
+[  46]    0167: A1 00 00                              mov ax, input
+[  47]    016A: E8 05 00                              call print_unsigned
+[  48]        :                                       
+[  49]    016D: B8 00 4C                              mov ax, 4c00h
+[  50]    0170: CD 21                                 int 21h
+[  51]        :                                       main endp
+[  52]        :                                       
+[  53]    0172:                                       print_unsigned proc
+[  54]        :                                       ; Push registers
+[  55]    0172: 50                                    push ax
+[  56]    0173: 53                                    push bx
+[  57]    0174: 51                                    push cx
+[  58]    0175: 52                                    push dx
+[  59]        :                                       
+[  60]    0176: BB 0A 00                              mov bx, 10 ; divisor
+[  61]        :                                       
+[  62]        :                                       ; Extract each digit
+[  63]    0179:                                       repeat:
+[  64]    0179: BA 00 00                              mov dx, 0
+[  65]    017C: F7 F3                                 div bx
+[  66]    017E: 80 C2 30                              add dl, 30h
+[  67]    0181: 52                                    push dx
+[  68]        :                                       
+[  69]    0182: 3D 00 00                              cmp ax, 0
+[  70]    0185: 75 F2                                 jne repeat
+[  71]        :                                       
+[  72]        :                                       ; Print digits
+[  73]    0187: B4 02                                 mov ah, 2
+[  74]    0189:                                       print:
+[  75]    0189: 5A                                    pop dx
+[  76]    018A: CD 21                                 int 21h
+[  77]    018C: 83 FA 00                              cmp dx, 0
+[  78]    018F: 75 F8                                 jne print
+[  79]        :                                       
+[  80]        :                                       ; Pop registers
+[  81]    0191: 5A                                    pop dx
+[  82]    0192: 59                                    pop cx
+[  83]    0193: 5B                                    pop bx
+[  84]    0194: 58                                    pop ax
+[  85]        :                                       
+[  86]    0195: C3                                    ret
+[  87]        :                                       print_unsigned endp
+[  88]        :                                       
+[  89]        :                                       end main
+[  90]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 96      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: CF      -   check sum (l.byte)
+0013: 40      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 11      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 11      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

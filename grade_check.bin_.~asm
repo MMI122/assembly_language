@@ -1,0 +1,53 @@
+.data
+grade db 85 ; the grade to be checked
+.code
+mov al, grade ; load the grade into AL
+
+cmp al, 90
+jge grade_A
+cmp al, 80
+jge grade_B
+cmp al, 70
+jge grade_C
+cmp al, 60
+jge grade_D
+jmp grade_F
+
+grade_A:
+mov ah, 2
+mov dl, 'A'
+int 21h
+jmp exit
+
+grade_B:
+mov ah, 2
+mov dl, 'B'
+int 21h
+jmp exit
+
+grade_C:
+mov ah, 2
+mov dl, 'C'
+int 21h
+jmp exit
+
+grade_D:
+mov ah, 2
+mov dl, 'D'
+int 21h
+jmp exit
+
+grade_F:
+mov ah, 2
+mov dl, 'F'
+int 21h
+jmp exit
+
+exit:
+mov ah, 4ch
+int 21h
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\grade_check.asm

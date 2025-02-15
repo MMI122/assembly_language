@@ -1,0 +1,53 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+mov ax,51
+mov bx,10
+div bx
+
+cmp al,9
+jge a_plus
+cmp al,8
+jge a
+cmp al,7
+jge b_plus
+cmp al,6
+jge b
+cmp al,5
+jge b_minus
+cmp al,4
+jge c
+cmp al,3
+jle f
+ret
+a_plus:
+mov cx,'a+'
+ret
+a:
+mov cx,'a'
+ret
+b_plus:
+mov cx,'b+'
+ret
+b:
+mov cx,'b'
+ret
+b_minus:
+mov cx,'b-'
+ret
+c:
+mov cx,'c'
+ret
+f:
+mov cx,'f'
+ret
+
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\grade_check.asm

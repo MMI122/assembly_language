@@ -1,0 +1,53 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+; add your code here  str2
+
+.data
+str1 db 'wekuet$'
+str2 db 'love$'
+.code
+mov ax,@data
+mov ds,ax
+mov si,offset str1
+mov di,offset str2
+li:
+mov al,[si]
+cmp al,'$'
+je exit1
+mov [di],al
+inc si
+inc di
+loop li
+exit1:
+inc di
+mov si,offset str2
+l2:
+mov al,[si]
+cmp al,'$'
+je exit2
+mov [di],al
+inc si
+inc di
+loop l2
+exit2:
+inc di
+mov [di],'$'
+mov dx,offset str1
+mov ah,09h
+int 21h
+
+mov ah,04ch
+int 21h
+
+
+
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\concatanate.asm

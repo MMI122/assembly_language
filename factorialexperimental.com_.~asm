@@ -1,0 +1,54 @@
+
+org 100h
+
+.data
+arr db 2,3,1
+arr2 db 3 dup(0)
+.code
+lea si,arr
+lea di,arr2
+mov cx,3
+
+here:
+mov dl,[si]
+mov al,dl
+
+
+here2:
+mul dl
+loop here2
+
+
+
+
+
+
+
+mov [di],al
+inc si
+inc di
+loop here
+
+
+
+mov cx,3
+mov bl,0
+
+loopA:
+mov dl,[di]
+add bl,dl
+inc si
+loop loopA
+
+
+
+
+ret
+
+
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\factorialexperimental.asm

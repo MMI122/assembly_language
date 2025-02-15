@@ -1,0 +1,141 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+5februarypalindrome.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 2/5/2024  --  4:46:39 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       
+[   5]        :                                       org 100h
+[   6]        :                                       
+[   7]        :                                       ; add your code here
+[   8]    0100: EB 3E                                 .data
+[   9]    0102: 45 6E 74 65 72 20 73 74 72 69 6E 67   str1 db "Enter string: $"
+                3A 20 24                            
+[  10]    0111: 0D 0A 6E 75 6D 62 65 72 20 70 61 6C   str2 db 13,10,"number palindrome$"
+                69 6E 64 72 6F 6D 65 24             
+[  11]    0125: 0D 0A 6E 6F 74 20 70 61 6C 69 6E 64   str3 db 13,10, "not palindrome$"
+                72 6F 6D 65 24                      
+[  12]    0136: 24 24 24 24 24 24 24 24 24 24         string db 10 dup('$')
+[  13]    0140:                                       .code
+[  14]    0140: BA 02 01                              lea dx,str1
+[  15]    0143: E8 5C 00                              call puts
+[  16]    0146: B8 36 01                              mov ax,offset string
+[  17]    0149: 50                                    push ax
+[  18]    014A: BB 06 00                              mov bx,6
+[  19]    014D: 53                                    push bx
+[  20]    014E: E8 06 00                              call string_input
+[  21]    0151: E8 16 00                              call find_palindrome
+[  22]    0154: E8 50 00                              call exit
+[  23]        :                                       endp ;end of main program
+[  24]        :                                       
+[  25]        :                                       
+[  26]        :                                       
+[  27]    0157:                                       string_input proc
+[  28]    0157: 55                                    push bp
+[  29]    0158: 8B EC                                 mov bp,sp
+[  30]    015A: 8B 5E 06                              mov bx,[bp+6]
+[  31]    015D: 8B 4E 04                              mov cx,[bp+4]
+[  32]    0160: B4 0A                                 mov ah,10
+[  33]    0162: 8D 17                                 lea dx,[bx]
+[  34]    0164: 8B D9                                 mov bx,cx
+[  35]    0166: CD 21                                 int 21h
+[  36]        :                                       
+[  37]        :                                       
+[  38]    0168: 5D                                    pop bp
+[  39]    0169: C3                                    ret
+[  40]        :                                       
+[  41]        :                                       string_input endp
+[  42]        :                                       
+[  43]        :                                       
+[  44]        :                                       
+[  45]    016A:                                       find_palindrome proc
+[  46]    016A: BE 01 00                              mov si,1
+[  47]    016D: B4 00                                 mov ah,0
+[  48]    016F: 8A 84 36 01                           mov al,string[si]
+[  49]    0173: B3 02                                 mov bl,2
+[  50]    0175: F6 F3                                 div bl
+[  51]    0177: B5 00                                 mov ch,0
+[  52]    0179: 8A C8                                 mov cl,al
+[  53]    017B: 46                                    inc si
+[  54]    017C: B4 00                                 mov ah,0
+[  55]    017E: A0 37 01                              mov al,string[1]
+[  56]    0181: 8B F8                                 mov di,ax
+[  57]    0183: 47                                    inc di
+[  58]    0184:                                       again:
+[  59]    0184: 8A 84 36 01                           mov al,string[si]
+[  60]    0188: 3A 85 36 01                           cmp al,string[di]
+[  61]    018C: 75 0C                                 jne not_palindrome
+[  62]    018E: 46                                    inc si
+[  63]    018F: 47                                    inc di
+[  64]    0190: E2 F2                                 loop again
+[  65]        :                                       
+[  66]        :                                       
+[  67]    0192:                                       palindrome:
+[  68]    0192: BA 11 01                              lea dx,str2
+[  69]    0195: E8 0A 00                              call puts
+[  70]    0198: EB 06                                 jmp return
+[  71]        :                                       
+[  72]        :                                       
+[  73]    019A:                                       not_palindrome:
+[  74]    019A: BA 11 01                              lea dx,str2
+[  75]    019D: E8 02 00                              call puts
+[  76]        :                                       
+[  77]        :                                       
+[  78]    01A0:                                       return:
+[  79]    01A0: 5D                                    pop bp
+[  80]    01A1: C3                                    ret
+[  81]        :                                       
+[  82]        :                                       find_palindrome endp
+[  83]        :                                       
+[  84]        :                                       
+[  85]    01A2:                                       puts proc
+[  86]    01A2: B4 09                                 mov ah,09h
+[  87]    01A4: CD 21                                 int 21h
+[  88]    01A6: C3                                    ret
+[  89]        :                                       puts endp
+[  90]        :                                       
+[  91]        :                                       
+[  92]    01A7:                                       exit proc
+[  93]    01A7: B4 4C                                 mov ah,4ch
+[  94]    01A9: CD 21                                 int 21h
+[  95]    01AB: C3                                    ret
+[  96]        :                                       exit endp
+[  97]        :                                       
+[  98]        :                                       
+[  99]        :                                       
+[ 100]        :                                       
+[ 101]        :                                       end main
+[ 102]        :                                       
+[ 103]        :                                       
+[ 104]        :                                       
+[ 105]        :                                       
+[ 106]        :                                       
+[ 107]        :                                       
+[ 108]        :                                       
+[ 109]        :                                       
+[ 110]        :                                       
+[ 111]        :                                       
+[ 112]        :                                       
+[ 113]        :                                       
+[ 114]        :                                       
+[ 115]        :                                       
+[ 116]        :                                       
+[ 117]        :                                       
+[ 118]        :                                       
+[ 119]        :                                       
+[ 120]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

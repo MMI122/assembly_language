@@ -1,0 +1,16 @@
+< THE SYMBOL TABLE >  factorialexperimental.bin_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+ARR                      	00000     	1         	VAR       	data      
+ARR2                     	00003     	1         	VAR       	data      
+CODE                     	00001     	-5        	SEGMENT   	(ITSELF)  
+HERE                     	00009     	-1        	LABEL     	code      
+FACTORIAL                	00014     	-1        	LABEL     	code      
+FACT_LOOP                	0001C     	-1        	LABEL     	code      
+ADD_LOOP                 	0002C     	-1        	LABEL     	code      
+===================================================================================================
+[ 1/1/2024  --  11:16:32 PM ] 
+< END >
+ 
