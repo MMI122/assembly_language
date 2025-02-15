@@ -1,0 +1,26 @@
+< THE SYMBOL TABLE >  sumarray.com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+ARR                      	00102     	1         	VAR       	(NOSEG)   
+CODE                     	00107     	-1        	LABEL     	(NOSEG)   
+MAIN                     	00107     	-1        	NEAR      	(NOSEG)   
+S_DCL_LOC1TMP            	00115     	1         	VAR       	(NOSEG)   
+SKIP_DCL_LOC1TMP         	00127     	-1        	LABEL     	(NOSEG)   
+NEXT_CHAR_LOC1TMP        	0012A     	-1        	LABEL     	(NOSEG)   
+PRINTED_LOC1TMP          	00138     	-1        	LABEL     	(NOSEG)   
+LOOPIN                   	0013A     	-1        	LABEL     	(NOSEG)   
+S_DCL_LOC2TMP            	00159     	1         	VAR       	(NOSEG)   
+SKIP_DCL_LOC2TMP         	00167     	-1        	LABEL     	(NOSEG)   
+NEXT_CHAR_LOC2TMP        	0016A     	-1        	LABEL     	(NOSEG)   
+PRINTED_LOC2TMP          	00178     	-1        	LABEL     	(NOSEG)   
+LOOPOUT                  	0017A     	-1        	LABEL     	(NOSEG)   
+LOOPA                    	00194     	-1        	LABEL     	(NOSEG)   
+S_DCL_LOC3TMP            	0019F     	1         	VAR       	(NOSEG)   
+SKIP_DCL_LOC3TMP         	001AC     	-1        	LABEL     	(NOSEG)   
+NEXT_CHAR_LOC3TMP        	001AF     	-1        	LABEL     	(NOSEG)   
+PRINTED_LOC3TMP          	001BD     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 1/1/2024  --  4:41:35 PM ] 
+< END >
+ 

@@ -1,0 +1,15 @@
+< THE SYMBOL TABLE >  removestringcharacter.bin_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+ARR                      	00000     	1         	VAR       	data      
+CODE                     	00001     	-5        	SEGMENT   	(ITSELF)  
+INPUT_LOOP               	00006     	-1        	LABEL     	code      
+OUTPUT_LOOP              	00017     	-1        	LABEL     	code      
+_LOCATION_COUNTER__N1_L2B	00027     	-1        	LABEL     	code      
+_LOCATION_COUNTER__N2_L2C	00027     	-1        	LABEL     	code      
+===================================================================================================
+[ 1/22/2024  --  3:28:48 PM ] 
+< END >
+ 

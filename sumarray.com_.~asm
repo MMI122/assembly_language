@@ -1,0 +1,85 @@
+
+include 'emu8086.inc'
+
+org 100h
+.model small
+.data
+arr db 5 dup(?)
+.code
+main proc
+
+mov ax,@data
+mov ds,ax
+
+mov cx,5
+mov si,offset arr
+
+print "Enter 5 numbers: "
+loopIn:
+mov ah,1
+int 21h
+sub al, 48
+mov [si],al
+inc si
+loop loopIn
+
+;new line
+mov ah,2
+mov dl,10
+int 21h
+mov dl,13
+int 21h
+
+mov si,offset arr
+mov cx,5
+
+print "You entered: "
+loopOut:
+mov dl,[si]
+add dl, 48
+mov ah,2
+int 21h
+
+mov dl,32
+mov ah,2
+int 21h
+
+inc si
+loop loopOut
+
+mov si,offset arr
+mov cx,5
+mov bl,0
+
+loopA:
+mov dl,[si]
+add bl,dl
+inc si
+loop loopA
+
+; Print sum
+print "sum of array"
+mov ah, 0
+mov al, bl
+mov dl, 10
+div dl
+
+mov dh, ah ; save tens digit
+
+add al, 48 ; convert ones digit
+mov dl, al
+mov ah, 2
+int 21h
+
+mov dl, dh ; restore tens digit
+add dl, 48 ; convert to ASCII
+mov ah, 2
+int 21h
+
+main endp
+ret
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\sumarray.asm

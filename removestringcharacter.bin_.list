@@ -1,0 +1,101 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+removestringcharacter.bin_ -- emu8086 assembler version: 4.08  
+ 
+[ 1/22/2024  --  3:28:48 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       ;
+[   5]        :                                       .data
+[   6]    0000: 00 00 00 00 00 00                     arr db 6 dup(0) ; declare an array with 6 bytes, initialized to 0
+[   7]        :                                       
+[   8]        :                                       .code
+[   9]    0010: B9 06 00                              mov cx, 6 ; number of elements in the array
+[  10]    0013: BE 00 00                              lea si, arr ; load the address of the array
+[  11]        :                                       
+[  12]    0016:                                       input_loop:
+[  13]    0016: B4 01                                 mov ah, 01h ; service number for console input
+[  14]    0018: CD 21                                 int 21h ; call DOS interrupt
+[  15]    001A: 2C 30                                 sub al, '0' ; convert from ASCII to number
+[  16]    001C: 88 04                                 mov [si], al ; store the number in the array
+[  17]    001E: 46                                    inc si ; move to the next position in the array
+[  18]    001F: E2 F5                                 loop input_loop ; repeat for all elements
+[  19]        :                                       
+[  20]    0021: B9 06 00                              mov cx, 6 ; number of elements in the array
+[  21]    0024: BE 00 00                              lea si, arr ; load the address of the array
+[  22]        :                                       
+[  23]    0027:                                       output_loop:
+[  24]    0027: 8A 04                                 mov al, [si] ; load the number from the array
+[  25]    0029: 04 30                                 add al, '0' ; convert from number to ASCII
+[  26]    002B: B4 02                                 mov ah, 02h ; service number for console output
+[  27]    002D: CD 21                                 int 21h ; call DOS interrupt
+[  28]    002F: 46                                    inc si ; move to the next position in the array
+[  29]    0030: E2 F5                                 loop output_loop ; repeat for all elements
+[  30]        :                                       
+[  31]    0032: B8 00 4C                              mov ax, 4C00h ; terminate program
+[  32]    0035: CD 21                                 int 21h
+[  33]        :                                       
+[  34]        :                                       
+[  35]        :                                       
+[  36]        :                                       ;org 100h
+[  37]        :                                       ;.model small
+[  38]        :                                       ;
+[  39]        :                                       ;; add your code here
+[  40]        :                                       ;.data
+[  41]        :                                       ;str1 db 10,13, 'we love kuet'
+[  42]        :                                       ;str2 db 10,13, 'evu'
+[  43]        :                                       ;
+[  44]    0037:                                       ;len equ ($-str1)
+[  45]    0037:                                       ;len1 equ ($-str2)
+[  46]        :                                       ;.code
+[  47]        :                                       ;mov si,offset str1
+[  48]        :                                       ;mov di,offset str2
+[  49]        :                                       ;
+[  50]        :                                       ;
+[  51]        :                                       ;mov cx,len1
+[  52]        :                                       ;loop1:
+[  53]        :                                       ;mov al,[si]
+[  54]        :                                       ;mov bl,[di]
+[  55]        :                                       ;
+[  56]        :                                       ;cmp al,bl
+[  57]        :                                       ;
+[  58]        :                                       ;je here
+[  59]        :                                       ;
+[  60]        :                                       ;inc si
+[  61]        :                                       ;
+[  62]        :                                       ;
+[  63]        :                                       ;here:
+[  64]        :                                       ;mov al,032
+[  65]        :                                       ;
+[  66]        :                                       ;inc di
+[  67]        :                                       ;
+[  68]        :                                       ;loop loop1
+[  69]        :                                       ;
+[  70]        :                                       ;
+[  71]        :                                       ;
+[  72]        :                                       ;
+[  73]        :                                       ;
+[  74]        :                                       ;
+[  75]        :                                       ;
+[  76]        :                                       ;
+[  77]        :                                       ;ret
+[  78]        :                                       ;
+[  79]        :                                       ;
+[  80]        :                                       ;
+[  81]        :                                       ;
+[  82]        :                                       ;
+[  83]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

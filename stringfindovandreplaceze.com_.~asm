@@ -1,0 +1,123 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+; add your code here
+.data
+str1 db 'ove love lope'
+len1 equ ($-str1)
+str2 db 'ov'
+len2 equ ($-str2)
+str3 db 'ez'
+
+var1 dw ?
+var2 dw ?
+var3 dw ?
+var4 dw ?
+cnt dw 0
+count dw 0
+.code
+mov si,offset str1
+mov di,offset str2
+;mov dx,0
+
+mov cx,len1
+loop1:
+mov al,[si]
+mov ah,[di]
+cmp al,ah
+je here
+ret1:
+inc si
+loop loop1
+
+ret
+;jne looping
+;hlt
+here:
+mov bx,len2
+sub bx,1
+mov var4,cx
+mov cx,bx
+red:
+
+inc si   ;how are we making sure the string is matching? otherwise will it come here?no,right?
+
+inc di
+mov al,[si]
+mov bl,[di]
+inc cnt
+cmp al,bl
+jne jodiequalnahoy
+
+loop red
+inc count
+mov bx, var4
+sub bx, cnt
+mov cx, bx
+jmp here6
+
+
+jodiequalnahoy:
+mov bx, var4
+sub bx, cnt
+mov cx, bx
+mov di,offset str2
+jmp ret1
+
+;how do we make sure to implement the lines after this
+
+
+;cmp si,$
+
+;jne looping2
+;hlt
+;
+;
+;looping:
+;loop loop1
+;looping2:
+;loop loop1
+;
+
+here6:
+;inc dx
+
+mov var3,cx
+
+mov var2,si
+;mov var3,di
+inc si
+mov cx,len2
+mov di,offset str3
+mov bx,len2
+sub bx,1
+add di,bx
+yet:
+dec si
+mov ah,[di]
+mov [si],ah
+dec di
+loop yet
+mov si,var2
+mov cx,var3
+mov di,offset str2
+mov ax, 0
+mov cnt, ax
+jmp ret1
+
+
+
+
+
+
+
+
+
+
+
+
+
+; [SOURCE]: C:\emu8086\MySource\stringfindovandreplaceze.asm

@@ -1,0 +1,16 @@
+< THE SYMBOL TABLE >  removestringcharacter.com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STR1                     	00102     	1         	VAR       	(NOSEG)   
+STR2                     	0010E     	1         	VAR       	(NOSEG)   
+_LOCATION_COUNTER__N1_L15	00111     	-1        	LABEL     	(NOSEG)   
+CODE                     	00111     	-1        	LABEL     	(NOSEG)   
+INPUT_LOOP               	00117     	-1        	LABEL     	(NOSEG)   
+LOOP1                    	00126     	-1        	LABEL     	(NOSEG)   
+HERE                     	0012F     	-1        	LABEL     	(NOSEG)   
+OUTPUT_LOOP              	0013A     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 1/22/2024  --  3:43:32 PM ] 
+< END >
+ 

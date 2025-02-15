@@ -1,0 +1,149 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+;include 'emu8086.inc'
+;org 100h
+;.model small
+;.data
+;    str1 db "Enter your book", "$"
+;    str2 db 50 dup(?)  ; allocate a large enough buffer
+;.code
+;    ; set up the pointers for str1 and str2
+;    lea si, str1
+;    lea di, str2
+;
+;    ; calculate the length of str1
+;    mov cx, 0
+;    mov bx, si
+;    while_loop:
+;        cmp byte ptr [bx], '$'
+;        je end_while
+;        inc bx
+;        inc cx
+;        jmp while_loop
+;    end_while:
+;
+;    ; point si to the end of str1
+;    add si, cx
+;    dec si  ; adjust for zero-based indexing
+;
+;    ; reverse the string
+;    reverse_loop:
+;        ; copy the character from str1 to str2
+;        mov al, [si]
+;        mov [di], al
+;
+;        ; update the pointers
+;        dec si
+;        inc di
+;
+;        ; repeat until cx is zero
+;        loop reverse_loop
+;
+;    ; terminate the program
+;    mov ah, 4ch
+;    int 21h
+;end start
+;include 'emu8086.inc'
+;org 100h
+;.model small
+;.data
+;    str1 db "Enter your book", "$"
+;    len equ ($-str1) - 1  ; calculate the length of str1
+;    str2 db len dup(?)  ; allocate a buffer of the same length
+;.code
+;    ; set up the pointers for str1 and str2
+;    lea si, str1
+;    add si, len  ; point to the end of str1
+;    lea di, str2  ; point to the start of str2
+;
+;    ; set up the counter
+;    mov cx, len
+;
+;reverse_loop:
+;    ; copy the character from str1 to str2
+;    mov al, [si]
+;    mov [di], al
+;
+;    ; update the pointers
+;    dec si
+;    inc di
+;
+;    ; repeat until cx is zero
+;    loop reverse_loop
+;
+;    ; terminate the program
+;    mov ah, 4ch
+;    int 21h
+;end start
+;include 'emu8086.inc'
+;org 100h
+;.model small
+;.data
+;    str1 db "Enter your book", "$"
+;    len equ ($-str1) - 1  ; calculate the length of str1 excluding '$'
+;    str2 db len dup(?)  ; allocate a buffer of the same length
+;.code
+;    ; set up the pointers for str1 and str2
+;    lea si, str1
+;    add si, len  ; point to the end of str1
+;    lea di, str2  ; point to the start of str2
+;
+;    ; set up the counter
+;    mov cx, len
+;
+;reverse_loop:
+;    ; copy the character from str1 to str2
+;    mov al, [si]
+;    mov [di], al
+;
+;    ; update the pointers
+;    dec si
+;    inc di
+;
+;    ; repeat until cx is zero
+;    loop reverse_loop
+;
+;    ; add the '$' at the end of str2
+;    ;mov byte ptr [di], 'E'
+;
+;    ; terminate the program
+;    mov ah, 4ch
+;    int 21h
+;end start
+include 'emu8086.inc'
+org 100h
+.model small
+.data
+str1 db "Enter your book"
+len equ ($-str1)-1
+str2 db len dup(?)
+.code
+
+lea si, str1
+add si, len
+lea di, str2
+mov cx, len
+
+reverse_loop:
+
+mov al, [si]
+mov [di], al
+
+
+dec si
+inc di
+
+
+loop reverse_loop
+
+
+mov ah, 4ch
+int 21h
+end start
+
+
+
+
+; [SOURCE]: C:\Users\MN\OneDrive\Assembly_Home_Practice\reversal_of_string.asm

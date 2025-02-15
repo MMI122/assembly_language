@@ -1,0 +1,27 @@
+< THE SYMBOL TABLE >  stringfindovandreplaceze.com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STR1                     	00102     	1         	VAR       	(NOSEG)   
+_LOCATION_COUNTER__N1_L9 	0010F     	-1        	LABEL     	(NOSEG)   
+STR2                     	0010F     	1         	VAR       	(NOSEG)   
+_LOCATION_COUNTER__N2_LB 	00111     	-1        	LABEL     	(NOSEG)   
+STR3                     	00111     	1         	VAR       	(NOSEG)   
+VAR1                     	00113     	2         	VAR       	(NOSEG)   
+VAR2                     	00115     	2         	VAR       	(NOSEG)   
+VAR3                     	00117     	2         	VAR       	(NOSEG)   
+VAR4                     	00119     	2         	VAR       	(NOSEG)   
+CNT                      	0011B     	2         	VAR       	(NOSEG)   
+COUNT                    	0011D     	2         	VAR       	(NOSEG)   
+CODE                     	0011F     	-1        	LABEL     	(NOSEG)   
+LOOP1                    	00128     	-1        	LABEL     	(NOSEG)   
+RET1                     	00130     	-1        	LABEL     	(NOSEG)   
+HERE                     	00134     	-1        	LABEL     	(NOSEG)   
+RED                      	00140     	-1        	LABEL     	(NOSEG)   
+JODIEQUALNAHOY           	00160     	-1        	LABEL     	(NOSEG)   
+HERE6                    	0016F     	-1        	LABEL     	(NOSEG)   
+YET                      	00186     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 2/8/2024  --  9:44:43 PM ] 
+< END >
+ 

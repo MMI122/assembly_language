@@ -1,0 +1,166 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+reversal_of_string.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 2/13/2024  --  12:33:51 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       
+[   5]        :                                       ;include 'emu8086.inc'
+[   6]        :                                       ;org 100h
+[   7]        :                                       ;.model small
+[   8]        :                                       ;.data
+[   9]        :                                       ;    str1 db "Enter your book", "$"
+[  10]        :                                       ;    str2 db 50 dup(?)  ; allocate a large enough buffer
+[  11]        :                                       ;.code
+[  12]        :                                       ;    ; set up the pointers for str1 and str2
+[  13]        :                                       ;    lea si, str1
+[  14]        :                                       ;    lea di, str2
+[  15]        :                                       ;
+[  16]        :                                       ;    ; calculate the length of str1
+[  17]        :                                       ;    mov cx, 0
+[  18]        :                                       ;    mov bx, si
+[  19]        :                                       ;    while_loop:
+[  20]        :                                       ;        cmp byte ptr [bx], '$'
+[  21]        :                                       ;        je end_while
+[  22]        :                                       ;        inc bx
+[  23]        :                                       ;        inc cx
+[  24]        :                                       ;        jmp while_loop
+[  25]        :                                       ;    end_while:
+[  26]        :                                       ;
+[  27]        :                                       ;    ; point si to the end of str1
+[  28]        :                                       ;    add si, cx
+[  29]        :                                       ;    dec si  ; adjust for zero-based indexing
+[  30]        :                                       ;
+[  31]        :                                       ;    ; reverse the string
+[  32]        :                                       ;    reverse_loop:
+[  33]        :                                       ;        ; copy the character from str1 to str2
+[  34]        :                                       ;        mov al, [si]
+[  35]        :                                       ;        mov [di], al
+[  36]        :                                       ;
+[  37]        :                                       ;        ; update the pointers
+[  38]        :                                       ;        dec si
+[  39]        :                                       ;        inc di
+[  40]        :                                       ;
+[  41]        :                                       ;        ; repeat until cx is zero
+[  42]        :                                       ;        loop reverse_loop
+[  43]        :                                       ;
+[  44]        :                                       ;    ; terminate the program
+[  45]        :                                       ;    mov ah, 4ch
+[  46]        :                                       ;    int 21h
+[  47]        :                                       ;end start
+[  48]        :                                       ;include 'emu8086.inc'
+[  49]        :                                       ;org 100h
+[  50]        :                                       ;.model small
+[  51]        :                                       ;.data
+[  52]        :                                       ;    str1 db "Enter your book", "$"
+[  53]        :                                       ;    len equ ($-str1) - 1  ; calculate the length of str1
+[  54]        :                                       ;    str2 db len dup(?)  ; allocate a buffer of the same length
+[  55]        :                                       ;.code
+[  56]        :                                       ;    ; set up the pointers for str1 and str2
+[  57]        :                                       ;    lea si, str1
+[  58]        :                                       ;    add si, len  ; point to the end of str1
+[  59]        :                                       ;    lea di, str2  ; point to the start of str2
+[  60]        :                                       ;
+[  61]        :                                       ;    ; set up the counter
+[  62]        :                                       ;    mov cx, len
+[  63]        :                                       ;
+[  64]        :                                       ;reverse_loop:
+[  65]        :                                       ;    ; copy the character from str1 to str2
+[  66]        :                                       ;    mov al, [si]
+[  67]        :                                       ;    mov [di], al
+[  68]        :                                       ;
+[  69]        :                                       ;    ; update the pointers
+[  70]        :                                       ;    dec si
+[  71]        :                                       ;    inc di
+[  72]        :                                       ;
+[  73]        :                                       ;    ; repeat until cx is zero
+[  74]        :                                       ;    loop reverse_loop
+[  75]        :                                       ;
+[  76]        :                                       ;    ; terminate the program
+[  77]        :                                       ;    mov ah, 4ch
+[  78]        :                                       ;    int 21h
+[  79]        :                                       ;end start
+[  80]        :                                       ;include 'emu8086.inc'
+[  81]        :                                       ;org 100h
+[  82]        :                                       ;.model small
+[  83]        :                                       ;.data
+[  84]        :                                       ;    str1 db "Enter your book", "$"
+[  85]        :                                       ;    len equ ($-str1) - 1  ; calculate the length of str1 excluding '$'
+[  86]        :                                       ;    str2 db len dup(?)  ; allocate a buffer of the same length
+[  87]        :                                       ;.code
+[  88]        :                                       ;    ; set up the pointers for str1 and str2
+[  89]        :                                       ;    lea si, str1
+[  90]        :                                       ;    add si, len  ; point to the end of str1
+[  91]        :                                       ;    lea di, str2  ; point to the start of str2
+[  92]        :                                       ;
+[  93]        :                                       ;    ; set up the counter
+[  94]        :                                       ;    mov cx, len
+[  95]        :                                       ;
+[  96]        :                                       ;reverse_loop:
+[  97]        :                                       ;    ; copy the character from str1 to str2
+[  98]        :                                       ;    mov al, [si]
+[  99]        :                                       ;    mov [di], al
+[ 100]        :                                       ;
+[ 101]        :                                       ;    ; update the pointers
+[ 102]        :                                       ;    dec si
+[ 103]        :                                       ;    inc di
+[ 104]        :                                       ;
+[ 105]        :                                       ;    ; repeat until cx is zero
+[ 106]        :                                       ;    loop reverse_loop
+[ 107]        :                                       ;
+[ 108]        :                                       ;    ; add the '$' at the end of str2
+[ 109]        :                                       ;    ;mov byte ptr [di], 'E'
+[ 110]        :                                       ;
+[ 111]        :                                       ;    ; terminate the program
+[ 112]        :                                       ;    mov ah, 4ch
+[ 113]        :                                       ;    int 21h
+[ 114]        :                                       ;end start
+[ 115]        :                                       include 'emu8086.inc'
+[ 116]        :                                       org 100h
+[ 117]        :                                       .model small
+[ 118]    0100: EB 1D                                 .data
+[ 119]    0102: 45 6E 74 65 72 20 79 6F 75 72 20 62   str1 db "Enter your book"
+                6F 6F 6B                            
+[ 120]    0111:                                       len equ ($-str1)-1
+[ 121]    0111: 00 00 00 00 00 00 00 00 00 00 00 00   str2 db len dup(?)
+                00 00                               
+[ 122]    011F:                                       .code
+[ 123]        :                                       
+[ 124]    011F: BE 02 01                              lea si, str1
+[ 125]    0122: 83 C6 0E                              add si, len
+[ 126]    0125: BF 11 01                              lea di, str2
+[ 127]    0128: B9 0E 00                              mov cx, len
+[ 128]        :                                       
+[ 129]    012B:                                       reverse_loop:
+[ 130]        :                                       
+[ 131]    012B: 8A 04                                 mov al, [si]
+[ 132]    012D: 88 05                                 mov [di], al
+[ 133]        :                                       
+[ 134]        :                                       
+[ 135]    012F: 4E                                    dec si
+[ 136]    0130: 47                                    inc di
+[ 137]        :                                       
+[ 138]        :                                       
+[ 139]    0131: E2 F8                                 loop reverse_loop
+[ 140]        :                                       
+[ 141]        :                                       
+[ 142]    0133: B4 4C                                 mov ah, 4ch
+[ 143]    0135: CD 21                                 int 21h
+[ 144]        :                                       end start
+[ 145]        :                                       
+[ 146]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,86 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+;
+.data
+arr db 6 dup(0) ; declare an array with 6 bytes, initialized to 0
+
+.code
+mov cx, 6 ; number of elements in the array
+lea si, arr ; load the address of the array
+
+input_loop:
+mov ah, 01h ; service number for console input
+int 21h ; call DOS interrupt
+sub al, '0' ; convert from ASCII to number
+mov [si], al ; store the number in the array
+inc si ; move to the next position in the array
+loop input_loop ; repeat for all elements
+
+mov cx, 6 ; number of elements in the array
+lea si, arr ; load the address of the array
+
+output_loop:
+mov al, [si] ; load the number from the array
+add al, '0' ; convert from number to ASCII
+mov ah, 02h ; service number for console output
+int 21h ; call DOS interrupt
+inc si ; move to the next position in the array
+loop output_loop ; repeat for all elements
+
+mov ax, 4C00h ; terminate program
+int 21h
+
+
+
+;org 100h
+;.model small
+;
+;; add your code here
+;.data
+;str1 db 10,13, 'we love kuet'
+;str2 db 10,13, 'evu'
+;
+;len equ ($-str1)
+;len1 equ ($-str2)
+;.code
+;mov si,offset str1
+;mov di,offset str2
+;
+;
+;mov cx,len1
+;loop1:
+;mov al,[si]
+;mov bl,[di]
+;
+;cmp al,bl
+;
+;je here
+;
+;inc si
+;
+;
+;here:
+;mov al,032
+;
+;inc di
+;
+;loop loop1
+;
+;
+;
+;
+;
+;
+;
+;
+;ret
+;
+;
+;
+;
+;
+
+
+
+; [SOURCE]: C:\emu8086\MySource\removestringcharacter.asm

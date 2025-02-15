@@ -1,0 +1,97 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+removestringcharacter.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 1/22/2024  --  3:43:32 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       ;
+[   5]        :                                       
+[   6]        :                                       
+[   7]        :                                       
+[   8]        :                                       
+[   9]        :                                       
+[  10]        :                                       
+[  11]        :                                       
+[  12]        :                                       org 100h
+[  13]        :                                       .model small
+[  14]        :                                       
+[  15]        :                                       ; add your code here
+[  16]    0100: EB 0F                                 .data
+[  17]    0102: 00 00 00 00 00 00 00 00 00 00 00 00   str1 db 12 dup(0)
+                                                    
+[  18]        :                                       
+[  19]    010E: 65 76 75                              str2 db  'evu'
+[  20]        :                                       
+[  21]        :                                       
+[  22]    0111:                                       len1 equ ($-str2)
+[  23]    0111:                                       .code
+[  24]    0111: B9 0C 00                              mov cx, 12
+[  25]    0114: BE 02 01                              lea si, str1
+[  26]        :                                       
+[  27]    0117:                                       input_loop:
+[  28]    0117: B4 01                                 mov ah, 01h ; service number for console input
+[  29]    0119: CD 21                                 int 21h
+[  30]    011B: 88 04                                 mov [si], al ; store the number in the array
+[  31]    011D: 46                                    inc si
+[  32]    011E: E2 F7                                 loop input_loop ; repeat for all elements
+[  33]    0120: BF 0E 01                              mov di,offset str2
+[  34]        :                                       
+[  35]        :                                       
+[  36]    0123: B9 03 00                              mov cx,len1
+[  37]    0126:                                       loop1:
+[  38]    0126: 8A 04                                 mov al,[si]
+[  39]    0128: 8A 1D                                 mov bl,[di]
+[  40]        :                                       
+[  41]    012A: 3A C3                                 cmp al,bl
+[  42]        :                                       
+[  43]    012C: 74 01                                 je here
+[  44]        :                                       
+[  45]    012E: 46                                    inc si
+[  46]        :                                       
+[  47]        :                                       
+[  48]    012F:                                       here:
+[  49]    012F: B0 20                                 mov al,032
+[  50]        :                                       
+[  51]    0131: 47                                    inc di
+[  52]        :                                       
+[  53]    0132: E2 F2                                 loop loop1
+[  54]    0134: B9 0C 00                              mov cx, 12
+[  55]    0137: BE 02 01                              lea si, str1
+[  56]        :                                       
+[  57]    013A:                                       output_loop:
+[  58]    013A: 8A 04                                 mov al, [si]
+[  59]        :                                       
+[  60]    013C: B4 02                                 mov ah, 02h
+[  61]    013E: CD 21                                 int 21h
+[  62]    0140: 46                                    inc si
+[  63]    0141: E2 F7                                 loop output_loop
+[  64]        :                                       
+[  65]    0143: C3                                    ret
+[  66]        :                                       
+[  67]        :                                       ;
+[  68]        :                                       ;
+[  69]        :                                       ;
+[  70]        :                                       ;
+[  71]        :                                       ;
+[  72]        :                                       
+[  73]        :                                       ;
+[  74]        :                                       ;
+[  75]        :                                       ;
+[  76]        :                                       ;
+[  77]        :                                       ;
+[  78]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

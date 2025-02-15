@@ -1,0 +1,139 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+stringfindovandreplaceze.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 2/8/2024  --  9:44:43 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       ; You may customize this and other start-up templates;
+[   3]        :                                       ; The location of this template is c:\emu8086\inc\0_com_template.txt
+[   4]        :                                       
+[   5]        :                                       org 100h
+[   6]        :                                       
+[   7]        :                                       ; add your code here
+[   8]    0100: EB 1D                                 .data
+[   9]    0102: 6F 76 65 20 6C 6F 76 65 20 6C 6F 70   str1 db 'ove love lope'
+                65                                  
+[  10]    010F:                                       len1 equ ($-str1)
+[  11]    010F: 6F 76                                 str2 db 'ov'
+[  12]    0111:                                       len2 equ ($-str2)
+[  13]    0111: 65 7A                                 str3 db 'ez'
+[  14]        :                                       
+[  15]    0113: 00 00                                 var1 dw ?
+[  16]    0115: 00 00                                 var2 dw ?
+[  17]    0117: 00 00                                 var3 dw ?
+[  18]    0119: 00 00                                 var4 dw ?
+[  19]    011B: 00 00                                 cnt dw 0
+[  20]    011D: 00 00                                 count dw 0
+[  21]    011F:                                       .code
+[  22]    011F: BE 02 01                              mov si,offset str1
+[  23]    0122: BF 0F 01                              mov di,offset str2
+[  24]        :                                       ;mov dx,0
+[  25]        :                                       
+[  26]    0125: B9 0D 00                              mov cx,len1
+[  27]    0128:                                       loop1:
+[  28]    0128: 8A 04                                 mov al,[si]
+[  29]    012A: 8A 25                                 mov ah,[di]
+[  30]    012C: 3A C4                                 cmp al,ah
+[  31]    012E: 74 04                                 je here
+[  32]    0130:                                       ret1:
+[  33]    0130: 46                                    inc si
+[  34]    0131: E2 F5                                 loop loop1
+[  35]        :                                       
+[  36]    0133: C3                                    ret
+[  37]        :                                       ;jne looping
+[  38]        :                                       ;hlt
+[  39]    0134:                                       here:
+[  40]    0134: BB 02 00                              mov bx,len2
+[  41]    0137: 83 EB 01                              sub bx,1
+[  42]    013A: 89 0E 19 01                           mov var4,cx
+[  43]    013E: 8B CB                                 mov cx,bx
+[  44]    0140:                                       red:
+[  45]        :                                       
+[  46]    0140: 46                                    inc si   ;how are we making sure the string is matching? otherwise will it come here?no,right?
+[  47]        :                                       
+[  48]    0141: 47                                    inc di
+[  49]    0142: 8A 04                                 mov al,[si]
+[  50]    0144: 8A 1D                                 mov bl,[di]
+[  51]    0146: FF 06 1B 01                           inc cnt
+[  52]    014A: 3A C3                                 cmp al,bl
+[  53]    014C: 75 12                                 jne jodiequalnahoy
+[  54]        :                                       
+[  55]    014E: E2 F0                                 loop red
+[  56]    0150: FF 06 1D 01                           inc count
+[  57]    0154: 8B 1E 19 01                           mov bx, var4
+[  58]    0158: 2B 1E 1B 01                           sub bx, cnt
+[  59]    015C: 8B CB                                 mov cx, bx
+[  60]    015E: EB 0F                                 jmp here6
+[  61]        :                                       
+[  62]        :                                       
+[  63]    0160:                                       jodiequalnahoy:
+[  64]    0160: 8B 1E 19 01                           mov bx, var4
+[  65]    0164: 2B 1E 1B 01                           sub bx, cnt
+[  66]    0168: 8B CB                                 mov cx, bx
+[  67]    016A: BF 0F 01                              mov di,offset str2
+[  68]    016D: EB C1                                 jmp ret1
+[  69]        :                                       
+[  70]        :                                       ;how do we make sure to implement the lines after this
+[  71]        :                                       
+[  72]        :                                       
+[  73]        :                                       ;cmp si,$
+[  74]        :                                       
+[  75]        :                                       ;jne looping2
+[  76]        :                                       ;hlt
+[  77]        :                                       ;
+[  78]        :                                       ;
+[  79]        :                                       ;looping:
+[  80]        :                                       ;loop loop1
+[  81]        :                                       ;looping2:
+[  82]        :                                       ;loop loop1
+[  83]        :                                       ;
+[  84]        :                                       
+[  85]    016F:                                       here6:
+[  86]        :                                       ;inc dx
+[  87]        :                                       
+[  88]    016F: 89 0E 17 01                           mov var3,cx
+[  89]        :                                       
+[  90]    0173: 89 36 15 01                           mov var2,si
+[  91]        :                                       ;mov var3,di
+[  92]    0177: 46                                    inc si
+[  93]    0178: B9 02 00                              mov cx,len2
+[  94]    017B: BF 11 01                              mov di,offset str3
+[  95]    017E: BB 02 00                              mov bx,len2
+[  96]    0181: 83 EB 01                              sub bx,1
+[  97]    0184: 03 FB                                 add di,bx
+[  98]    0186:                                       yet:
+[  99]    0186: 4E                                    dec si
+[ 100]    0187: 8A 25                                 mov ah,[di]
+[ 101]    0189: 88 24                                 mov [si],ah
+[ 102]    018B: 4F                                    dec di
+[ 103]    018C: E2 F8                                 loop yet
+[ 104]    018E: 8B 36 15 01                           mov si,var2
+[ 105]    0192: 8B 0E 17 01                           mov cx,var3
+[ 106]    0196: BF 0F 01                              mov di,offset str2
+[ 107]    0199: B8 00 00                              mov ax, 0
+[ 108]    019C: A3 1B 01                              mov cnt, ax
+[ 109]    019F: EB 8F                                 jmp ret1
+[ 110]        :                                       
+[ 111]        :                                       
+[ 112]        :                                       
+[ 113]        :                                       
+[ 114]        :                                       
+[ 115]        :                                       
+[ 116]        :                                       
+[ 117]        :                                       
+[ 118]        :                                       
+[ 119]        :                                       
+[ 120]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

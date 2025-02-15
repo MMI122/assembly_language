@@ -1,0 +1,20 @@
+< THE SYMBOL TABLE >  palindrome.com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STR                      	00102     	1         	VAR       	(NOSEG)   
+MSG1                     	00116     	1         	VAR       	(NOSEG)   
+MSG2                     	0011D     	1         	VAR       	(NOSEG)   
+CODE                     	00125     	-1        	LABEL     	(NOSEG)   
+HERE                     	00128     	-1        	LABEL     	(NOSEG)   
+CONT                     	00150     	-1        	LABEL     	(NOSEG)   
+NT                       	00151     	-1        	LABEL     	(NOSEG)   
+CASE                     	00153     	-1        	LABEL     	(NOSEG)   
+THERE                    	0015B     	-1        	LABEL     	(NOSEG)   
+L1                       	00168     	-1        	LABEL     	(NOSEG)   
+ED                       	0017F     	-1        	LABEL     	(NOSEG)   
+SESH                     	00186     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 2/5/2024  --  4:44:48 PM ] 
+< END >
+ 

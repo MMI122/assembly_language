@@ -1,0 +1,109 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+sumarray.com_ -- emu8086 assembler version: 4.08  
+ 
+[ 1/1/2024  --  4:41:35 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       
+[   2]        :                                       include 'emu8086.inc'
+[   3]        :                                       
+[   4]        :                                       org 100h
+[   5]        :                                       .model small
+[   6]    0100: EB 05                                 .data
+[   7]    0102: 00 00 00 00 00                        arr db 5 dup(?)
+[   8]    0107:                                       .code
+[   9]    0107:                                       main proc
+[  10]        :                                       
+[  11]    0107: 8C C8                                 mov ax,@data
+[  12]    0109: 8E D8                                 mov ds,ax
+[  13]        :                                       
+[  14]    010B: B9 05 00                              mov cx,5
+[  15]    010E: BE 02 01                              mov si,offset arr
+[  16]        :                                       
+[  17]    0111: 50 56 EB 12 45 6E 74 65 72 20 35 20   print "Enter 5 numbers: "
+                6E 75 6D 62 65 72 73 3A 20 00 BE 15 
+                01 2E 8A 04 3C 00 74 07 46 B4 0E CD 
+                10 EB F2 5E 58                      
+[  18]    013A:                                       loopIn:
+[  19]    013A: B4 01                                 mov ah,1
+[  20]    013C: CD 21                                 int 21h
+[  21]    013E: 2C 30                                 sub al, 48
+[  22]    0140: 88 04                                 mov [si],al
+[  23]    0142: 46                                    inc si
+[  24]    0143: E2 F5                                 loop loopIn
+[  25]        :                                       
+[  26]        :                                       ;new line
+[  27]    0145: B4 02                                 mov ah,2
+[  28]    0147: B2 0A                                 mov dl,10
+[  29]    0149: CD 21                                 int 21h
+[  30]    014B: B2 0D                                 mov dl,13
+[  31]    014D: CD 21                                 int 21h
+[  32]        :                                       
+[  33]    014F: BE 02 01                              mov si,offset arr
+[  34]    0152: B9 05 00                              mov cx,5
+[  35]        :                                       
+[  36]    0155: 50 56 EB 0E 59 6F 75 20 65 6E 74 65   print "You entered: "
+                72 65 64 3A 20 00 BE 59 01 2E 8A 04 
+                3C 00 74 07 46 B4 0E CD 10 EB F2 5E 
+                58                                  
+[  37]    017A:                                       loopOut:
+[  38]    017A: 8A 14                                 mov dl,[si]
+[  39]    017C: 80 C2 30                              add dl, 48
+[  40]    017F: B4 02                                 mov ah,2
+[  41]    0181: CD 21                                 int 21h
+[  42]        :                                       
+[  43]    0183: B2 20                                 mov dl,32
+[  44]    0185: B4 02                                 mov ah,2
+[  45]    0187: CD 21                                 int 21h
+[  46]        :                                       
+[  47]    0189: 46                                    inc si
+[  48]    018A: E2 EE                                 loop loopOut
+[  49]        :                                       
+[  50]    018C: BE 02 01                              mov si,offset arr
+[  51]    018F: B9 05 00                              mov cx,5
+[  52]    0192: B3 00                                 mov bl,0
+[  53]        :                                       
+[  54]    0194:                                       loopA:
+[  55]    0194: 8A 14                                 mov dl,[si]
+[  56]    0196: 02 DA                                 add bl,dl
+[  57]    0198: 46                                    inc si
+[  58]    0199: E2 F9                                 loop loopA
+[  59]        :                                       
+[  60]        :                                       ; Print sum
+[  61]    019B: 50 56 EB 0D 73 75 6D 20 6F 66 20 61   print "sum of array"
+                72 72 61 79 00 BE 9F 01 2E 8A 04 3C 
+                00 74 07 46 B4 0E CD 10 EB F2 5E 58 
+                                                    
+[  62]    01BF: B4 00                                 mov ah, 0
+[  63]    01C1: 8A C3                                 mov al, bl
+[  64]    01C3: B2 0A                                 mov dl, 10
+[  65]    01C5: F6 F2                                 div dl
+[  66]        :                                       
+[  67]    01C7: 8A F4                                 mov dh, ah ; save tens digit
+[  68]        :                                       
+[  69]    01C9: 04 30                                 add al, 48 ; convert ones digit
+[  70]    01CB: 8A D0                                 mov dl, al
+[  71]    01CD: B4 02                                 mov ah, 2
+[  72]    01CF: CD 21                                 int 21h
+[  73]        :                                       
+[  74]    01D1: 8A D6                                 mov dl, dh ; restore tens digit
+[  75]    01D3: 80 C2 30                              add dl, 48 ; convert to ASCII
+[  76]    01D6: B4 02                                 mov ah, 2
+[  77]    01D8: CD 21                                 int 21h
+[  78]        :                                       
+[  79]        :                                       main endp
+[  80]    01DA: C3                                    ret
+[  81]        :                                       
+[  82]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================
